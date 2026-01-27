@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install -D tailwindcss@3.4.17 postcss autoprefixer)",
+      "Bash(npx tailwindcss init -p)",
+      "Bash(npm run build)",
+      "WebFetch(domain:abdul-basit-portfolio-jet.vercel.app)",
+      "Bash(npm run dev)",
+      "Bash(npx vite --port 5173)",
+      "Bash(netstat -ano)",
+      "Bash(findstr :5173)",
+      "Bash(npm install typewriter-effect react-simple-typewriter tsparticles-react lucide-react)",
+      "Bash(npm install typewriter-effect react-simple-typewriter tsparticles react-tsparticles lucide-react)",
+      "Bash(npm install framer-motion)"
+    ]
+  }
+}
