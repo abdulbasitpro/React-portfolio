@@ -11,7 +11,8 @@
       "Bash(findstr :5173)",
       "Bash(npm install typewriter-effect react-simple-typewriter tsparticles-react lucide-react)",
       "Bash(npm install typewriter-effect react-simple-typewriter tsparticles react-tsparticles lucide-react)",
-      "Bash(npm install framer-motion)"
+      "Bash(npm install framer-motion)",
+      "Bash(npm uninstall react-simple-typewriter)"
     ]
   }
 }
