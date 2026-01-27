@@ -18,31 +18,40 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I will get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
+
+    // Create email with form data
+    const subject = `Portfolio Contact: Message from ${formData.name}`;
+    const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+
+    // Open email client with pre-filled data
+    window.location.href = `mailto:abdulbasitdevx@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    // Show confirmation message and reset form after a delay to allow email client to open
+    setTimeout(() => {
+      setFormData({ name: '', email: '', message: '' });
+      alert('Email client opened. Please send the email to complete your message.');
+    }, 500);
   };
 
   const contactInfo = [
     {
       icon: <Mail size={20} />,
       label: "Email",
-      value: "abdulbasit@example.com",
-      link: "mailto:abdulbasit@example.com",
+      value: "abdulbasitdevx@gmail.com",
+      link: "mailto:abdulbasitdevx@gmail.com",
       color: "text-red-500 dark:text-red-400"
     },
     {
       icon: <Phone size={20} />,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      link: "tel:+15551234567",
+      value: "+923436887399",
+      link: "tel:+923436887399",
       color: "text-green-500 dark:text-green-400"
     },
     {
       icon: <MapPin size={20} />,
       label: "Location",
-      value: "City, Country",
+      value: "Peshawar, Pakistan",
       link: "#",
       color: "text-blue-500 dark:text-blue-400"
     }

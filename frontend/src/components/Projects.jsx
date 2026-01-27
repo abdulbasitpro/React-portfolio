@@ -5,57 +5,57 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "E-commerce Platform",
-      description: "A full-featured online shopping platform with payment integration.",
-      image: "https://via.placeholder.com/400x250/4F46E5/FFFFFF?text=E-commerce",
-      technologies: ["React", "Node.js", "MongoDB"],
-      liveLink: "#",
-      githubLink: "#"
+      title: "AB Visionary Solutions",
+      description: "Professional business solutions platform showcasing services and expertise.",
+      image: "/src/assets/ab-visionary-solutions-screenshot.png", // Replace with actual screenshot
+      technologies: ["React", "Tailwind CSS", "JavaScript"],
+      liveLink: "https://ab-visionary-solutions.vercel.app/",
+      githubLink: "https://github.com/abdulbasitpro/Ab-visionary-solutions-"
     },
     {
       id: 2,
-      title: "Task Management App",
-      description: "Productivity application for managing tasks and team collaboration.",
-      image: "https://via.placeholder.com/400x250/7C3AED/FFFFFF?text=Task+App",
-      technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-      liveLink: "#",
-      githubLink: "#"
+      title: "Project of Elegence Arena",
+      description: "A sophisticated wedding hall booking system with elegant design and seamless reservation process.",
+      image: "/src/assets/elegence-arena-screenshot.png", // Replace with actual screenshot
+      technologies: ["React", "Tailwind CSS", "JavaScript"],
+      liveLink: "https://project-of-elegence-arena.vercel.app/",
+      githubLink: "https://github.com/abdulbasitpro/project-of-elegence-arena"
     },
     {
       id: 3,
-      title: "Weather Dashboard",
-      description: "Real-time weather information with forecasting capabilities.",
-      image: "https://via.placeholder.com/400x250/059669/FFFFFF?text=Weather",
-      technologies: ["JavaScript", "API Integration", "Chart.js"],
-      liveLink: "#",
-      githubLink: "#"
+      title: "E-commerce Hackathon",
+      description: "A comprehensive e-commerce store development guide with product API integration and best practices.",
+      image: "/src/assets/hackathon-screenshot.png", // Replace with actual screenshot
+      technologies: ["HTML", "CSS", "JavaScript"],
+      liveLink: "https://hackathon-vert-seven.vercel.app/",
+      githubLink: "https://github.com/abdulbasitpro/Hackathon"
     },
     {
       id: 4,
-      title: "Social Media Dashboard",
-      description: "Analytics dashboard for social media account management.",
-      image: "https://via.placeholder.com/400x250/DC2626/FFFFFF?text=Social+Media",
-      technologies: ["React", "Redux", "Material UI"],
-      liveLink: "#",
-      githubLink: "#"
+      title: "Landing Page",
+      description: "Modern and responsive landing page with smooth animations and conversions.",
+      image: "/src/assets/landing-page-screenshot.png", // Replace with actual screenshot
+      technologies: ["React", "Tailwind CSS", "Framer Motion"],
+      liveLink: "https://landing-page-five-xi-39.vercel.app/",
+      githubLink: "https://github.com/abdulbasitpro/Landing-page"
     },
     {
       id: 5,
-      title: "Fitness Tracker",
-      description: "Mobile-first fitness tracking application with workout plans.",
-      image: "https://via.placeholder.com/400x250/F59E0B/FFFFFF?text=Fitness",
-      technologies: ["React Native", "GraphQL", "PostgreSQL"],
-      liveLink: "#",
-      githubLink: "#"
+      title: "Sun and Moon Theme",
+      description: "Dynamic theme switching application with beautiful sun and moon animations.",
+      image: "/src/assets/sun-moon-screenshot.png", // Replace with actual screenshot
+      technologies: ["HTML", "CSS", "JavaScript"],
+      liveLink: "https://sun-and-moon-two.vercel.app/",
+      githubLink: "https://github.com/abdulbasitpro/sun-and-moon"
     },
     {
       id: 6,
-      title: "Blog Platform",
-      description: "Content management system for bloggers and content creators.",
-      image: "https://via.placeholder.com/400x250/EC4899/FFFFFF?text=Blog+Platform",
-      technologies: ["Next.js", "Prisma", "Stripe"],
-      liveLink: "#",
-      githubLink: "#"
+      title: "Netflix Clone",
+      description: "A Netflix-inspired streaming platform with movie browsing and recommendations.",
+      image: "/src/assets/netflix-clone-screenshot.png", // Replace with actual screenshot
+      technologies: ["HTML", "CSS", "JavaScript"],
+      liveLink: "https://netflix-by-abdul-basit.vercel.app/",
+      githubLink: "https://github.com/abdulbasitpro/Netflix-"
     }
   ];
 

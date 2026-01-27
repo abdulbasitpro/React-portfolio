@@ -112,15 +112,15 @@ const Resume = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="flex items-center">
               <Mail className="w-4 h-4 mr-2 text-gray-600 dark:text-gray-400" />
-              <span className="text-gray-600 dark:text-gray-300">abdulbasit@example.com</span>
+              <span className="text-gray-600 dark:text-gray-300">abdulbasitdevx@gmail.com</span>
             </div>
             <div className="flex items-center">
               <Phone className="w-4 h-4 mr-2 text-gray-600 dark:text-gray-400" />
-              <span className="text-gray-600 dark:text-gray-300">+1 (555) 123-4567</span>
+              <span className="text-gray-600 dark:text-gray-300">+923436887399</span>
             </div>
             <div className="flex items-center">
               <MapPin className="w-4 h-4 mr-2 text-gray-600 dark:text-gray-400" />
-              <span className="text-gray-600 dark:text-gray-300">City, Country</span>
+              <span className="text-gray-600 dark:text-gray-300">Peshawar, Pakistan</span>
             </div>
           </div>
 
