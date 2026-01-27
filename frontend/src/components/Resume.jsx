@@ -123,6 +123,31 @@ const Resume = () => {
               <span className="text-gray-600 dark:text-gray-300">City, Country</span>
             </div>
           </div>
+
+          {/* Social Links */}
+          <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+            <h4 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">Connect with me</h4>
+            <div className="flex space-x-4">
+              <a
+                href="https://www.linkedin.com/in/abdul-basit-8616aa294/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors duration-200 text-sm font-medium"
+                aria-label="LinkedIn"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/abdulbasitpro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors duration-200 text-sm font-medium"
+                aria-label="GitHub"
+              >
+                GitHub
+              </a>
+            </div>
+          </div>
         </div>
 
         {/* Certifications Section */}

@@ -114,6 +114,34 @@ const Projects = () => {
             </div>
           ))}
         </div>
+
+        {/* Connect with me section */}
+        <div className="mt-16 text-center">
+          <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">Connect With Me</h3>
+          <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
+            Interested in collaborating or want to learn more? Feel free to connect with me!
+          </p>
+          <div className="flex justify-center space-x-4">
+            <a
+              href="https://www.linkedin.com/in/abdul-basit-8616aa294/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors duration-200 font-medium shadow-lg hover:shadow-xl"
+              aria-label="LinkedIn"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/abdulbasitpro"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors duration-200 font-medium shadow-lg hover:shadow-xl"
+              aria-label="GitHub"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
