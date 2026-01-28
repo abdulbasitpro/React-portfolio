@@ -1,22 +1,33 @@
-import React from 'react';
-import { GraduationCap, Briefcase, Award, Download, Calendar, MapPin, Mail, Phone } from 'lucide-react';
+import React from "react";
+import {
+  GraduationCap,
+  Briefcase,
+  Award,
+  Download,
+  Calendar,
+  MapPin,
+  Mail,
+  Phone,
+} from "lucide-react";
 
 const Resume = () => {
   const education = [
     {
       id: 1,
       degree: "Bachelor of Science in Information Technology",
-      institution: "University Name",
-      year: "2021 - Present",
-      description: "Currently pursuing degree in Information Technology with focus on web development and database systems."
+      institution: "The University of Agriculture Peshawar",
+      year: "2023 - 2027",
+      description:
+        "Currently pursuing degree in Information Technology with focus on web development and database systems.",
     },
     {
       id: 2,
-      degree: "Web Development Bootcamp",
-      institution: "Coding Academy",
-      year: "2023",
-      description: "Intensive 6-month program covering modern web development technologies."
-    }
+      degree: "MERN Stack Development",
+      institution: "SMIT (Saylani Mass IT Training)",
+      year: "2025 - 2026",
+      description:
+        "1.5-year intensive program covering MongoDB, Express, React, and Node.js technologies.",
+    },
   ];
 
   const experience = [
@@ -25,15 +36,17 @@ const Resume = () => {
       position: "MERN Stack Developer",
       company: "Tech Solutions Inc.",
       year: "2023 - Present",
-      description: "Developing full-stack web applications using MongoDB, Express, React, and Node.js."
+      description:
+        "Developing full-stack web applications using MongoDB, Express, React, and Node.js.",
     },
     {
       id: 2,
       position: "Web Developer",
       company: "Digital Agency",
       year: "2022 - 2023",
-      description: "Built and maintained client websites using modern JavaScript frameworks and databases."
-    }
+      description:
+        "Built and maintained client websites using modern JavaScript frameworks and databases.",
+    },
   ];
 
   const certifications = [
@@ -41,23 +54,26 @@ const Resume = () => {
       id: 1,
       name: "React Certification",
       issuer: "Meta",
-      year: "2023"
+      year: "2023",
     },
     {
       id: 2,
       name: "Frontend Development",
       issuer: "Meta",
-      year: "2022"
-    }
+      year: "2022",
+    },
   ];
 
   return (
     <section id="resume" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white mb-4">Resume</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+            Resume
+          </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            My educational background, professional experience, and certifications.
+            My educational background, professional experience, and
+            certifications.
           </p>
         </div>
 
@@ -70,13 +86,22 @@ const Resume = () => {
             </h3>
             <div className="space-y-6">
               {education.map((edu) => (
-                <div key={edu.id} className="border-l-4 border-teal-600 pl-4 py-1 bg-white dark:bg-gray-800 p-4 rounded-r-lg shadow-sm">
-                  <h4 className="text-lg font-semibold text-gray-800 dark:text-white">{edu.degree}</h4>
-                  <p className="text-teal-600 dark:text-teal-400 font-medium">{edu.institution}</p>
+                <div
+                  key={edu.id}
+                  className="border-l-4 border-teal-600 pl-4 py-1 bg-white dark:bg-gray-800 p-4 rounded-r-lg shadow-sm"
+                >
+                  <h4 className="text-lg font-semibold text-gray-800 dark:text-white">
+                    {edu.degree}
+                  </h4>
+                  <p className="text-teal-600 dark:text-teal-400 font-medium">
+                    {edu.institution}
+                  </p>
                   <p className="text-gray-600 dark:text-gray-400 text-sm mb-2 flex items-center">
                     <Calendar size={14} className="mr-1" /> {edu.year}
                   </p>
-                  <p className="text-gray-600 dark:text-gray-300">{edu.description}</p>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {edu.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -90,13 +115,22 @@ const Resume = () => {
             </h3>
             <div className="space-y-6">
               {experience.map((exp) => (
-                <div key={exp.id} className="border-l-4 border-indigo-600 pl-4 py-1 bg-white dark:bg-gray-800 p-4 rounded-r-lg shadow-sm">
-                  <h4 className="text-lg font-semibold text-gray-800 dark:text-white">{exp.position}</h4>
-                  <p className="text-indigo-600 dark:text-indigo-400 font-medium">{exp.company}</p>
+                <div
+                  key={exp.id}
+                  className="border-l-4 border-indigo-600 pl-4 py-1 bg-white dark:bg-gray-800 p-4 rounded-r-lg shadow-sm"
+                >
+                  <h4 className="text-lg font-semibold text-gray-800 dark:text-white">
+                    {exp.position}
+                  </h4>
+                  <p className="text-indigo-600 dark:text-indigo-400 font-medium">
+                    {exp.company}
+                  </p>
                   <p className="text-gray-600 dark:text-gray-400 text-sm mb-2 flex items-center">
                     <Calendar size={14} className="mr-1" /> {exp.year}
                   </p>
-                  <p className="text-gray-600 dark:text-gray-300">{exp.description}</p>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {exp.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -112,21 +146,29 @@ const Resume = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="flex items-center">
               <Mail className="w-4 h-4 mr-2 text-gray-600 dark:text-gray-400" />
-              <span className="text-gray-600 dark:text-gray-300">abdulbasitdevx@gmail.com</span>
+              <span className="text-gray-600 dark:text-gray-300">
+                abdulbasitdevx@gmail.com
+              </span>
             </div>
             <div className="flex items-center">
               <Phone className="w-4 h-4 mr-2 text-gray-600 dark:text-gray-400" />
-              <span className="text-gray-600 dark:text-gray-300">+923436887399</span>
+              <span className="text-gray-600 dark:text-gray-300">
+                +923436887399
+              </span>
             </div>
             <div className="flex items-center">
               <MapPin className="w-4 h-4 mr-2 text-gray-600 dark:text-gray-400" />
-              <span className="text-gray-600 dark:text-gray-300">Peshawar, Pakistan</span>
+              <span className="text-gray-600 dark:text-gray-300">
+                Peshawar, Pakistan
+              </span>
             </div>
           </div>
 
           {/* Social Links */}
           <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-            <h4 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">Connect with me</h4>
+            <h4 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">
+              Connect with me
+            </h4>
             <div className="flex space-x-4">
               <a
                 href="https://www.linkedin.com/in/abdul-basit-8616aa294/"
@@ -158,11 +200,18 @@ const Resume = () => {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {certifications.map((cert) => (
-              <div key={cert.id} className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+              <div
+                key={cert.id}
+                className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm"
+              >
                 <div className="flex items-start justify-between">
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-800 dark:text-white mb-1">{cert.name}</h4>
-                    <p className="text-gray-600 dark:text-gray-400">{cert.issuer}</p>
+                    <h4 className="text-lg font-semibold text-gray-800 dark:text-white mb-1">
+                      {cert.name}
+                    </h4>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      {cert.issuer}
+                    </p>
                   </div>
                   <span className="bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300 text-sm font-medium px-2.5 py-0.5 rounded flex items-center">
                     <Calendar size={12} className="mr-1" /> {cert.year}
