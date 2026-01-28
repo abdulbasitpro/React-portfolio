@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Linkedin, Github, Twitter } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,21 +17,53 @@ const Contact = () => {
     }));
   };
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
-    // Create email with form data
-    const subject = `Portfolio Contact: Message from ${formData.name}`;
-    const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+    // Prepare email template parameters
+    const templateParams = {
+      from_name: formData.name,
+      reply_to: formData.email, // This allows you to reply directly to the sender
+      to_name: 'Abdul Basit', // Your name (optional, for personalization)
+      subject: `Portfolio Contact: Message from ${formData.name}`,
+      message: formData.message
+    };
 
-    // Open email client with pre-filled data
-    window.location.href = `mailto:abdulbasitdevx@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    // Send email using EmailJS
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID, // Your EmailJS service ID
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID, // Your EmailJS template ID
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY // Your EmailJS public key
+      )
+      .then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text);
+          setSubmitMessage('Message sent successfully!');
+          setFormData({ name: '', email: '', message: '' });
+          setIsSubmitting(false);
 
-    // Show confirmation message and reset form after a delay to allow email client to open
-    setTimeout(() => {
-      setFormData({ name: '', email: '', message: '' });
-      alert('Email client opened. Please send the email to complete your message.');
-    }, 500);
+          // Clear success message after 5 seconds
+          setTimeout(() => {
+            setSubmitMessage('');
+          }, 5000);
+        },
+        (error) => {
+          console.error('FAILED...', error);
+          setSubmitMessage('Failed to send message. Please try again.');
+          setIsSubmitting(false);
+
+          // Clear error message after 5 seconds
+          setTimeout(() => {
+            setSubmitMessage('');
+          }, 5000);
+        }
+      );
   };
 
   const contactInfo = [
@@ -163,12 +196,38 @@ const Contact = () => {
                     placeholder="Your message here..."
                   ></textarea>
                 </div>
+                {submitMessage && (
+                  <div className={`mb-4 p-3 rounded-md text-center ${
+                    submitMessage.includes('success')
+                      ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
+                      : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300'
+                  }`}>
+                    {submitMessage}
+                  </div>
+                )}
                 <button
                   type="submit"
-                  className="w-full bg-teal-600 hover:bg-teal-700 text-white py-3 px-4 rounded-md transition-colors duration-200 font-medium shadow-md hover:shadow-lg flex items-center justify-center"
+                  disabled={isSubmitting}
+                  className={`w-full py-3 px-4 rounded-md transition-colors duration-200 font-medium shadow-md hover:shadow-lg flex items-center justify-center ${
+                    isSubmitting
+                      ? 'bg-gray-400 cursor-not-allowed'
+                      : 'bg-teal-600 hover:bg-teal-700 text-white'
+                  }`}
                 >
-                  <Send size={18} className="mr-2" />
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={18} className="mr-2" />
+                      Send Message
+                    </>
+                  )}
                 </button>
               </div>
             </form>

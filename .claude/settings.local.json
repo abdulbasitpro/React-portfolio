@@ -19,7 +19,8 @@
       "Bash(powershell Get-ChildItem -Path \"D:\\\\CCR\\\\React-portfolio\\\\src\\\\assets\" -Recurse)",
       "Bash(copy \"src\\\\assets\\\\*.png\" \"public\\\\images\"\")",
       "Bash(xcopy /s \"src\\\\assets\\\\*.png\" \"public\\\\images\\\\\")",
-      "Bash(dir src\\\\assets\\\\*.png)"
+      "Bash(dir src\\\\assets\\\\*.png)",
+      "Bash(npm install @emailjs/browser)"
     ]
   }
 }
