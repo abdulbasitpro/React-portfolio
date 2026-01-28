@@ -253,7 +253,7 @@ const Skills = () => {
                       <div className="p-2 bg-gradient-to-r from-teal-500 to-blue-500 rounded-lg mr-4">
                         <IconComponent className="text-white" size={24} />
                       </div>
-                      <h4 className="text-xl font-semibold text-gray-900 dark:text-white capitalize text-2xl">
+                      <h4 className="text-2xl font-semibold text-gray-900 dark:text-white capitalize">
                         {category}
                       </h4>
                       <span className="ml-3 text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">
