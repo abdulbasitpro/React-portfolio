@@ -16,7 +16,7 @@ const Resume = () => {
       id: 1,
       degree: "Bachelor of Science in Information Technology",
       institution: "The University of Agriculture Peshawar",
-      year: "2023 - 2027",
+      year: "2021 - 2027",
       description:
         "Currently pursuing degree in Information Technology with focus on web development and database systems.",
     },
@@ -24,7 +24,7 @@ const Resume = () => {
       id: 2,
       degree: "MERN Stack Development",
       institution: "SMIT (Saylani Mass IT Training)",
-      year: "2025 - 2026",
+      year: "2021 - 2022",
       description:
         "1.5-year intensive program covering MongoDB, Express, React, and Node.js technologies.",
     },
@@ -33,19 +33,19 @@ const Resume = () => {
   const experience = [
     {
       id: 1,
-      position: "MERN Stack Developer",
-      company: "Tech Solutions Inc.",
-      year: "2023 - Present",
+      position: "MERN Stack Developer (Personal Projects)",
+      company: "",
+      year: "2025 – Present",
       description:
-        "Developing full-stack web applications using MongoDB, Express, React, and Node.js.",
+        "Building full-stack applications using MongoDB, Express, React, and Node.js. Learning through personal projects, documentation, and online resources. Focusing on REST APIs, authentication, databases, and deployments.",
     },
     {
       id: 2,
-      position: "Web Developer",
-      company: "Digital Agency",
-      year: "2022 - 2023",
+      position: "Web Developer (Learning & Personal Projects)",
+      company: "",
+      year: "2024 – 2025",
       description:
-        "Built and maintained client websites using modern JavaScript frameworks and databases.",
+        "Developing responsive websites with JavaScript, React, and Tailwind CSS. Improving UI/UX, component structure, and performance through practice. Learning version control, Git workflows, and modern web tooling.",
     },
   ];
 
