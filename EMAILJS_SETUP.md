@@ -19,12 +19,12 @@ To make the contact form work properly, you need to configure EmailJS with your 
 
 1. Go to "Email Templates" in your dashboard
 2. Click "Create New Template"
-3. Set up your template with these variables:
-   - `{{from_name}}` - Sender's name
-   - `{{reply_to}}` - Sender's email (for replying to the message)
-   - `{{to_name}}` - Your name (recipient name, optional)
-   - `{{subject}}` - Email subject
-   - `{{message}}` - Email message content
+3. Set up your template with these settings:
+   - To Email: Your email address (e.g., abdulbasitdevx@gmail.com)
+   - From Name: `{{from_name}}` (or "Portfolio Contact: {{from_name}}")
+   - Reply To: `{{reply_to}}` (this allows you to reply directly to the sender)
+   - Subject: `{{subject}}` (or "Portfolio Contact: {{subject}}")
+   - Template Content: Include the `{{message}}` variable where you want the message to appear
 
 ## Step 4: Get Your Credentials
 

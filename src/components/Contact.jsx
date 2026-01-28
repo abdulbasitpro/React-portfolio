@@ -27,8 +27,7 @@ const Contact = () => {
     // Prepare email template parameters
     const templateParams = {
       from_name: formData.name,
-      reply_to: formData.email, // This allows you to reply directly to the sender
-      to_name: 'Abdul Basit', // Your name (optional, for personalization)
+      reply_to: formData.email, // This becomes the Reply-To header for easy replies
       subject: `Portfolio Contact: Message from ${formData.name}`,
       message: formData.message
     };
