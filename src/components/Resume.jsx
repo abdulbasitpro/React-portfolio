@@ -49,21 +49,6 @@ const Resume = () => {
     },
   ];
 
-  const certifications = [
-    {
-      id: 1,
-      name: "React Certification",
-      issuer: "Meta",
-      year: "2023",
-    },
-    {
-      id: 2,
-      name: "Frontend Development",
-      issuer: "Meta",
-      year: "2022",
-    },
-  ];
-
   return (
     <section id="resume" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -198,27 +183,21 @@ const Resume = () => {
             <Award className="w-6 h-6 mr-2 text-yellow-600 dark:text-yellow-400" />
             Certifications
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {certifications.map((cert) => (
-              <div
-                key={cert.id}
-                className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm"
-              >
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-800 dark:text-white mb-1">
-                      {cert.name}
-                    </h4>
-                    <p className="text-gray-600 dark:text-gray-400">
-                      {cert.issuer}
-                    </p>
-                  </div>
-                  <span className="bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300 text-sm font-medium px-2.5 py-0.5 rounded flex items-center">
-                    <Calendar size={12} className="mr-1" /> {cert.year}
-                  </span>
-                </div>
+          <div className="bg-white dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm text-center relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-teal-500/5 to-blue-500/5 opacity-0 animate-pulse"></div>
+            <div className="relative z-10">
+              <Award className="w-12 h-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
+              <h4 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">
+                No Certifications Yet
+              </h4>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Currently pursuing MERN Stack certification from SMIT (Saylani
+                Mass IT Training)
+              </p>
+              <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-teal-500 to-blue-500 text-white text-sm font-medium rounded-full animate-pulse shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <Calendar size={14} className="mr-2" /> Coming Soon
               </div>
-            ))}
+            </div>
           </div>
         </div>
 
