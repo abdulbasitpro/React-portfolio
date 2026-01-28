@@ -16,7 +16,7 @@ const Resume = () => {
       id: 1,
       degree: "Bachelor of Science in Information Technology",
       institution: "The University of Agriculture Peshawar",
-      year: "2021 - 2027",
+      year: "2023 - 2027",
       description:
         "Currently pursuing degree in Information Technology with focus on web development and database systems.",
     },
@@ -24,7 +24,7 @@ const Resume = () => {
       id: 2,
       degree: "MERN Stack Development",
       institution: "SMIT (Saylani Mass IT Training)",
-      year: "2021 - 2022",
+      year: "2024 - 2026",
       description:
         "1.5-year intensive program covering MongoDB, Express, React, and Node.js technologies.",
     },
