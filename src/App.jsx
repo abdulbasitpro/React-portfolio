@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { ThemeProvider } from './contexts/ThemeContext';
+import AppLoader from './components/AppLoader';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
@@ -24,10 +25,23 @@ const AppContent = () => {
 };
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // 2 seconds loading time
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
+    <AppLoader loading={isLoading}>
+      <ThemeProvider>
+        <AppContent />
+      </ThemeProvider>
+    </AppLoader>
   );
 };
 
