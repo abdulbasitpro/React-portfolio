@@ -1,13 +1,14 @@
 import React from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 
+
 const Projects = () => {
   const projects = [
     {
       id: 1,
       title: "AB Visionary Solutions",
       description: "Professional business solutions platform showcasing services and expertise.",
-      image: "/src/assets/ab-visionary-solutions-screenshot.png", // Replace with actual screenshot
+      image: "/images/ab-visionary-solutions-screenshot.png", // Replace with actual screenshot
       technologies: ["React", "Tailwind CSS", "JavaScript"],
       liveLink: "https://ab-visionary-solutions.vercel.app/",
       githubLink: "https://github.com/abdulbasitpro/Ab-visionary-solutions-"
@@ -16,7 +17,7 @@ const Projects = () => {
       id: 2,
       title: "Project of Elegence Arena",
       description: "A sophisticated wedding hall booking system with elegant design and seamless reservation process.",
-      image: "/src/assets/elegence-arena-screenshot.png", // Replace with actual screenshot
+      image: "/images/elegence-arena-screenshot.png", // Replace with actual screenshot
       technologies: ["React", "Tailwind CSS", "JavaScript"],
       liveLink: "https://project-of-elegence-arena.vercel.app/",
       githubLink: "https://github.com/abdulbasitpro/project-of-elegence-arena"
@@ -25,7 +26,7 @@ const Projects = () => {
       id: 3,
       title: "E-commerce Hackathon",
       description: "A comprehensive e-commerce store development guide with product API integration and best practices.",
-      image: "/src/assets/hackathon-screenshot.png", // Replace with actual screenshot
+      image: "/images/hackathon-screenshot.png", // Replace with actual screenshot
       technologies: ["HTML", "CSS", "JavaScript"],
       liveLink: "https://hackathon-vert-seven.vercel.app/",
       githubLink: "https://github.com/abdulbasitpro/Hackathon"
@@ -34,7 +35,7 @@ const Projects = () => {
       id: 4,
       title: "Landing Page",
       description: "Modern and responsive landing page with smooth animations and conversions.",
-      image: "/src/assets/landing-page-screenshot.png", // Replace with actual screenshot
+      image: "/images/landing-page-screenshot.png", // Replace with actual screenshot
       technologies: ["React", "Tailwind CSS", "Framer Motion"],
       liveLink: "https://landing-page-five-xi-39.vercel.app/",
       githubLink: "https://github.com/abdulbasitpro/Landing-page"
@@ -43,7 +44,7 @@ const Projects = () => {
       id: 5,
       title: "Sun and Moon Theme",
       description: "Dynamic theme switching application with beautiful sun and moon animations.",
-      image: "/src/assets/sun-moon-screenshot.png", // Replace with actual screenshot
+      image: "/images/sun-moon-screenshot.png", // Replace with actual screenshot
       technologies: ["HTML", "CSS", "JavaScript"],
       liveLink: "https://sun-and-moon-two.vercel.app/",
       githubLink: "https://github.com/abdulbasitpro/sun-and-moon"
@@ -52,7 +53,7 @@ const Projects = () => {
       id: 6,
       title: "Netflix Clone",
       description: "A Netflix-inspired streaming platform with movie browsing and recommendations.",
-      image: "/src/assets/netflix-clone-screenshot.png", // Replace with actual screenshot
+      image: "/images/netflix-clone-screenshot.png", // Replace with actual screenshot
       technologies: ["HTML", "CSS", "JavaScript"],
       liveLink: "https://netflix-by-abdul-basit.vercel.app/",
       githubLink: "https://github.com/abdulbasitpro/Netflix-"

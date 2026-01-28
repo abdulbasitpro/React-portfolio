@@ -12,7 +12,14 @@
       "Bash(npm install typewriter-effect react-simple-typewriter tsparticles-react lucide-react)",
       "Bash(npm install typewriter-effect react-simple-typewriter tsparticles react-tsparticles lucide-react)",
       "Bash(npm install framer-motion)",
-      "Bash(npm uninstall react-simple-typewriter)"
+      "Bash(npm uninstall react-simple-typewriter)",
+      "Bash(dir /s \"D:\\\\CCR\\\\React-portfolio\\\\public\")",
+      "Bash(dir \"D:\\\\CCR\\\\React-portfolio\\\\public\" /s)",
+      "Bash(powershell Get-ChildItem -Path \"D:\\\\CCR\\\\React-portfolio\\\\public\" -Recurse)",
+      "Bash(powershell Get-ChildItem -Path \"D:\\\\CCR\\\\React-portfolio\\\\src\\\\assets\" -Recurse)",
+      "Bash(copy \"src\\\\assets\\\\*.png\" \"public\\\\images\"\")",
+      "Bash(xcopy /s \"src\\\\assets\\\\*.png\" \"public\\\\images\\\\\")",
+      "Bash(dir src\\\\assets\\\\*.png)"
     ]
   }
 }
