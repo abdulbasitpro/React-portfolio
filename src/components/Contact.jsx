@@ -24,6 +24,20 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Validate environment variables
+    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceID || !templateID || !publicKey) {
+      setSubmitMessage('Error: Missing EmailJS configuration. Please contact the site administrator.');
+      setIsSubmitting(false);
+      setTimeout(() => {
+        setSubmitMessage('');
+      }, 5000);
+      return;
+    }
+
     // Prepare email template parameters
     const templateParams = {
       from_name: formData.name,
@@ -35,10 +49,10 @@ const Contact = () => {
     // Send email using EmailJS
     emailjs
       .send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID, // Your EmailJS service ID
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID, // Your EmailJS template ID
+        serviceID, // Your EmailJS service ID
+        templateID, // Your EmailJS template ID
         templateParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY // Your EmailJS public key
+        publicKey // Your EmailJS public key
       )
       .then(
         (response) => {
@@ -54,7 +68,25 @@ const Contact = () => {
         },
         (error) => {
           console.error('FAILED...', error);
-          setSubmitMessage('Failed to send message. Please try again.');
+          console.error('Error details:', {
+            status: error.status,
+            text: error.text,
+            message: error.message
+          });
+
+          // More specific error messages
+          let errorMessage = 'Failed to send message. ';
+          if (error.status === 400) {
+            errorMessage += 'Invalid request. Please check your inputs.';
+          } else if (error.status === 401) {
+            errorMessage += 'Authentication error. Please contact the site administrator.';
+          } else if (error.status === 404) {
+            errorMessage += 'Template or service not found. Please contact the site administrator.';
+          } else {
+            errorMessage += 'Please try again later.';
+          }
+
+          setSubmitMessage(errorMessage);
           setIsSubmitting(false);
 
           // Clear error message after 5 seconds
