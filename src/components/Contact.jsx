@@ -168,7 +168,7 @@ const Contact = () => {
                   href="https://github.com/abdulbasitpro"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-gray-800 text-white rounded-full flex items-center justify-center hover:bg-gray-900 transition-colors duration-200 shadow-md hover:shadow-lg"
+                  className="w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center hover:bg-gray-900 transition-colors duration-200 shadow-md hover:shadow-lg"
                   aria-label="GitHub"
                 >
                   <Github size={20} />

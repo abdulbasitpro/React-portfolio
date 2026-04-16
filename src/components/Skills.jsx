@@ -67,8 +67,8 @@ const softSkills = [
 
 const stats = [
   { value: '18+', label: 'Technologies', icon: Layers },
-  { value: '3+',  label: 'Years Building', icon: Code2 },
-  { value: '25+', label: 'Projects Shipped', icon: Globe }
+  { value: '1.5',  label: 'Years Building', icon: Code2 },
+  { value: '10+', label: 'Projects Shipped', icon: Globe }
 ];
 
 /* ─── Sub-components ────────────────────────────────────────────────────── */
@@ -214,9 +214,10 @@ const Skills = () => (
         gap: 16px;
         padding: 20px 24px;
         background: #fff;
-        border: 1px solid #e2e8f0;
+         border: 1px solid #e2e8f0;
         border-radius: 14px;
         box-shadow: 0 1px 3px rgba(0,0,0,.06);
+        
       }
       .dark .stat-card {
         background: #1a1f2e;
@@ -253,6 +254,7 @@ const Skills = () => (
         color: #0f172a;
         letter-spacing: -.01em;
         margin-bottom: 24px;
+        
       }
       .dark .section-sub-heading { color: #f1f5f9; }
 
@@ -328,6 +330,7 @@ const Skills = () => (
         border: 1px solid #e2e8f0;
         border-radius: 8px;
         padding: 4px 10px;
+        cursor:pointer;
       }
       .skill-tag:hover {
         background: rgba(99,102,241,.08);
