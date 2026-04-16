@@ -1,466 +1,465 @@
 import React, { useState } from 'react';
 import {
-  Code,
+  Code2,
   Server,
   Database,
   GitBranch,
-  Settings,
-  Github,
-  Shield,
-  Zap,
+  Wrench,
   Brain,
-  MessageCircle,
+  MessageSquare,
   Users,
   Clock,
-  ChevronDown,
-  ChevronUp,
-  TrendingUp,
-  BarChart3,
-  Target
+  Zap,
+  CheckCircle2,
+  Lightbulb,
+  LayoutGrid,
+  Layers,
+  Globe
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
-const Skills = () => {
-  const [expandedCategory, setExpandedCategory] = useState(null);
-  const [hoveredSkill, setHoveredSkill] = useState(null);
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, delay: i * 0.07, ease: 'easeOut' }
+  })
+};
 
-  const techStack = {
-    frontend: [
-      { name: "React", icon: Code, color: "text-blue-500", level: "Advanced", percentage: 90 },
-      { name: "TypeScript", icon: Code, color: "text-blue-600", level: "Advanced", percentage: 85 },
-      { name: "JavaScript", icon: Code, color: "text-yellow-500", level: "Advanced", percentage: 90 },
-      { name: "HTML", icon: Code, color: "text-orange-500", level: "Advanced", percentage: 85 },
-      { name: "CSS", icon: Code, color: "text-blue-400", level: "Advanced", percentage: 85 },
-      { name: "Tailwind", icon: Settings, color: "text-teal-500", level: "Advanced", percentage: 88 }
-    ],
-    backend: [
-      { name: "Node.js", icon: Server, color: "text-green-500", level: "Intermediate", percentage: 75 },
-      { name: "Express", icon: Shield, color: "text-gray-600", level: "Intermediate", percentage: 70 },
-      { name: "MongoDB", icon: Database, color: "text-green-600", level: "Intermediate", percentage: 75 },
-      { name: "REST APIs", icon: Zap, color: "text-purple-500", level: "Intermediate", percentage: 80 }
-    ],
-    tools: [
-      { name: "Git", icon: GitBranch, color: "text-orange-600", level: "Intermediate", percentage: 75 },
-      { name: "GitHub", icon: Github, color: "text-gray-700", level: "Intermediate", percentage: 80 },
-      { name: "Postman", icon: Settings, color: "text-orange-500", level: "Intermediate", percentage: 75 },
-      { name: "VS Code", icon: Code, color: "text-blue-500", level: "Advanced", percentage: 90 },
-      { name: "MongoDB Compass", icon: Database, color: "text-green-600", level: "Intermediate", percentage: 70 }
-    ]
-  };
+/* ─── Data ─────────────────────────────────────────────────────────────── */
 
-  const proficiencyLevels = [
-    { name: "React", level: "Advanced", percentage: 90, icon: Code, description: "Building complex applications with hooks, context, and state management" },
-    { name: "JavaScript", level: "Advanced", percentage: 90, icon: Code, description: "ES6+, async/await, closures, and modern JS patterns" },
-    { name: "TypeScript", level: "Advanced", percentage: 85, icon: Code, description: "Strong typing, interfaces, generics, and advanced TS features" },
-    { name: "Node.js", level: "Intermediate", percentage: 75, icon: Server, description: "Server-side development, event loop, and ecosystem" },
-    { name: "Express", level: "Intermediate", percentage: 70, icon: Shield, description: "Routing, middleware, error handling, and API development" },
-    { name: "MongoDB", level: "Intermediate", percentage: 75, icon: Database, description: "Document modeling, aggregation, and database optimization" },
-    { name: "HTML/CSS", level: "Advanced", percentage: 85, icon: Code, description: "Semantics, accessibility, and responsive design principles" },
-    { name: "Git", level: "Intermediate", percentage: 75, icon: GitBranch, description: "Branching, merging, collaboration, and workflows" }
-  ];
+const categories = [
+  {
+    id: 'frontend',
+    label: 'Frontend',
+    icon: LayoutGrid,
+    skills: ['React', 'TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3 / Sass', 'Tailwind CSS', 'Vite']
+  },
+  {
+    id: 'backend',
+    label: 'Backend',
+    icon: Server,
+    skills: ['Node.js', 'Express.js', 'REST APIs', 'JWT Auth', 'Middleware Design', 'MVC Architecture']
+  },
+  {
+    id: 'database',
+    label: 'Database',
+    icon: Database,
+    skills: ['MongoDB', 'Mongoose', 'MongoDB Atlas', 'NoSQL Design', 'Aggregation Pipeline']
+  },
+  {
+    id: 'tools',
+    label: 'Tools & DevOps',
+    icon: Wrench,
+    skills: ['Git & GitHub', 'VS Code', 'Postman', 'npm / yarn', 'Vercel', 'Figma Basics']
+  }
+];
 
-  const softSkills = [
-    { name: "Problem Solving", icon: Brain, description: "Analyzing complex issues and developing effective solutions", score: 90 },
-    { name: "Communication", icon: MessageCircle, description: "Clear verbal and written communication with teams", score: 85 },
-    { name: "Teamwork", icon: Users, description: "Collaborating effectively in diverse, cross-functional teams", score: 85 },
-    { name: "Time Management", icon: Clock, description: "Prioritizing tasks and meeting deadlines efficiently", score: 80 },
-    { name: "Adaptability", icon: Zap, description: "Quickly learning new technologies and adapting to changes", score: 88 },
-    { name: "Critical Thinking", icon: Brain, description: "Evaluating information and making informed decisions", score: 85 }
-  ];
+const softSkills = [
+  { icon: Brain,          label: 'Problem Solving',   note: 'Structured analytical thinking' },
+  { icon: MessageSquare,  label: 'Communication',      note: 'Clear, concise, async-first' },
+  { icon: Users,          label: 'Collaboration',      note: 'Cross-functional team player' },
+  { icon: Clock,          label: 'Time Management',    note: 'Deadline-driven & organised' },
+  { icon: Zap,            label: 'Adaptability',       note: 'Fast learner, tech-agnostic' },
+  { icon: Lightbulb,      label: 'Critical Thinking',  note: 'Data-informed decisions' }
+];
 
-  const categoryIcons = {
-    frontend: Code,
-    backend: Server,
-    tools: Settings
-  };
+const stats = [
+  { value: '18+', label: 'Technologies', icon: Layers },
+  { value: '3+',  label: 'Years Building', icon: Code2 },
+  { value: '25+', label: 'Projects Shipped', icon: Globe }
+];
 
-  const toggleCategory = (category) => {
-    setExpandedCategory(expandedCategory === category ? null : category);
-  };
+/* ─── Sub-components ────────────────────────────────────────────────────── */
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
+const Tag = ({ label }) => (
+  <span className="skill-tag">
+    <CheckCircle2 size={12} className="skill-tag-icon" />
+    {label}
+  </span>
+);
 
-  const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const skillCardVariants = {
-    hover: {
-      scale: 1.03,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut"
-      }
-    }
-  };
-
-  const SkillProgressBar = ({ percentage, color = "from-teal-500 to-blue-500" }) => (
-    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
-      <motion.div
-        className={`h-full bg-gradient-to-r ${color} rounded-full`}
-        initial={{ width: 0 }}
-        animate={{ width: `${percentage}%` }}
-        transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-      />
-    </div>
-  );
-
-  const SkillScore = ({ score }) => (
-    <div className="flex items-center">
-      <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
-      <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">{score}%</span>
-    </div>
-  );
-
+const CategoryCard = ({ cat, index }) => {
+  const Icon = cat.icon;
   return (
-    <section id="skills" className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-teal-400/10 to-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-purple-400/10 to-pink-500/10 rounded-full blur-3xl"></div>
+    <motion.div
+      custom={index}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-60px' }}
+      className="skill-category-card"
+    >
+      <div className="skill-category-header">
+        <span className="skill-category-icon-wrap">
+          <Icon size={18} />
+        </span>
+        <h4 className="skill-category-title">{cat.label}</h4>
+        <span className="skill-category-count">{cat.skills.length}</span>
       </div>
+      <div className="skill-tag-grid">
+        {cat.skills.map(s => <Tag key={s} label={s} />)}
+      </div>
+    </motion.div>
+  );
+};
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Animated Header */}
+const SoftSkillCard = ({ item, index }) => {
+  const Icon = item.icon;
+  return (
+    <motion.div
+      custom={index}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-60px' }}
+      className="soft-skill-card"
+    >
+      <span className="soft-skill-icon-wrap">
+        <Icon size={20} />
+      </span>
+      <div>
+        <p className="soft-skill-label">{item.label}</p>
+        <p className="soft-skill-note">{item.note}</p>
+      </div>
+    </motion.div>
+  );
+};
+
+/* ─── Main Component ────────────────────────────────────────────────────── */
+
+const Skills = () => (
+  <>
+    <style>{`
+      /* ── Section shell ── */
+      #skills {
+        padding: 80px 0 100px;
+        background: var(--bg-section, #f8fafc);
+        position: relative;
+        overflow: hidden;
+      }
+      .dark #skills {
+        background: #0f1117;
+      }
+
+      /* subtle grid texture */
+      #skills::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(99,102,241,.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(99,102,241,.04) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+      }
+
+      /* ── Container ── */
+      .skills-container {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ── Section header ── */
+      .skills-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: #6366f1;
+        background: rgba(99,102,241,.1);
+        border: 1px solid rgba(99,102,241,.2);
+        border-radius: 999px;
+        padding: 4px 14px;
+        margin-bottom: 20px;
+      }
+      .skills-heading {
+        font-size: clamp(2rem, 4vw, 2.75rem);
+        font-weight: 800;
+        line-height: 1.15;
+        color: #0f172a;
+        letter-spacing: -.02em;
+        margin-bottom: 14px;
+      }
+      .dark .skills-heading { color: #f1f5f9; }
+
+      .skills-sub {
+        font-size: 1.05rem;
+        color: #64748b;
+        max-width: 520px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+      .dark .skills-sub { color: #94a3b8; }
+
+      /* ── Stats row ── */
+      .stats-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin: 52px 0;
+      }
+      @media (max-width: 600px) { .stats-row { grid-template-columns: 1fr; } }
+
+      .stat-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 20px 24px;
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+        box-shadow: 0 1px 3px rgba(0,0,0,.06);
+      }
+      .dark .stat-card {
+        background: #1a1f2e;
+        border-color: #1e2740;
+      }
+      .stat-icon-wrap {
+        width: 44px; height: 44px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        display: flex; align-items: center; justify-content: center;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .stat-value {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: #0f172a;
+        line-height: 1;
+      }
+      .dark .stat-value { color: #f1f5f9; }
+      .stat-label {
+        font-size: .8rem;
+        color: #94a3b8;
+        margin-top: 2px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+      }
+
+      /* ── Section sub-headings ── */
+      .section-sub-heading {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: #0f172a;
+        letter-spacing: -.01em;
+        margin-bottom: 24px;
+      }
+      .dark .section-sub-heading { color: #f1f5f9; }
+
+      /* ── Category cards grid ── */
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        margin-bottom: 64px;
+      }
+
+      .skill-category-card {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 1px 3px rgba(0,0,0,.05);
+        transition: box-shadow .25s, transform .25s;
+      }
+      .skill-category-card:hover {
+        box-shadow: 0 8px 32px rgba(99,102,241,.12);
+        transform: translateY(-3px);
+      }
+      .dark .skill-category-card {
+        background: #1a1f2e;
+        border-color: #1e2740;
+      }
+
+      .skill-category-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+      .skill-category-icon-wrap {
+        width: 36px; height: 36px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        display: flex; align-items: center; justify-content: center;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .skill-category-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #0f172a;
+        flex: 1;
+      }
+      .dark .skill-category-title { color: #f1f5f9; }
+      .skill-category-count {
+        font-size: .75rem;
+        font-weight: 600;
+        color: #6366f1;
+        background: rgba(99,102,241,.1);
+        border-radius: 999px;
+        padding: 2px 8px;
+      }
+
+      /* ── Skill tags ── */
+      .skill-tag-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .skill-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: .78rem;
+        font-weight: 500;
+        color: #475569;
+        background: #f1f5f9;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 4px 10px;
+      }
+      .skill-tag:hover {
+        background: rgba(99,102,241,.08);
+        color: #6366f1;
+      }
+      .dark .skill-tag {
+        background: #0f1117;
+        border-color: #1e2740;
+        color: #94a3b8;
+      }
+      .dark .skill-tag:hover {
+        background: rgba(99,102,241,.12);
+        color: #818cf8;
+      }
+      .skill-tag-icon { color: #6366f1; flex-shrink: 0; }
+
+      /* ── Soft skills ── */
+      .soft-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+      }
+      .soft-skill-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 18px 20px;
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+      }
+      .dark .soft-skill-card {
+        background: #1a1f2e;
+        border-color: #1e2740;
+      }
+      .soft-skill-icon-wrap {
+        width: 40px; height: 40px;
+        border-radius: 10px;
+        background: rgba(99,102,241,.1);
+        display: flex; align-items: center; justify-content: center;
+        color: #6366f1;
+        flex-shrink: 0;
+      }
+      .soft-skill-label {
+        font-size: .95rem;
+        font-weight: 700;
+        color: #0f172a;
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+      .dark .soft-skill-label { color: #f1f5f9; }
+      .soft-skill-note {
+        font-size: .8rem;
+        color: #94a3b8;
+      }
+
+      /* ── Divider ── */
+      .skills-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+        margin: 52px 0;
+      }
+      .dark .skills-divider {
+        background: linear-gradient(90deg, transparent, #1e2740, transparent);
+      }
+    `}</style>
+
+    <section id="skills">
+      <div className="skills-container">
+
+        {/* ── Header ── */}
         <motion.div
-          initial={{ opacity: 0, y: -40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="text-center mb-16 relative z-10"
-        >
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 200 }}
-            className="inline-block mb-6"
-          >
-            <div className="p-4 bg-gradient-to-r from-teal-500 to-blue-600 rounded-2xl shadow-xl">
-              <Target className="w-8 h-8 text-white" />
-            </div>
-          </motion.div>
-
-          <motion.h2
-            className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-gray-900 via-teal-600 to-blue-600 bg-clip-text text-transparent dark:from-white dark:via-teal-400 dark:to-blue-400 mb-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            Skills & Expertise
-          </motion.h2>
-
-          <motion.p
-            className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            A comprehensive overview of my technical capabilities and professional competencies
-          </motion.p>
-        </motion.div>
-
-        {/* Stats Overview */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
-        >
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-lg">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-3xl font-bold bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent dark:from-teal-400 dark:to-blue-400">
-                  18+
-                </p>
-                <p className="text-gray-600 dark:text-gray-400">Technologies</p>
-              </div>
-              <BarChart3 className="w-10 h-10 text-teal-500 dark:text-teal-400" />
-            </div>
-          </div>
-
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-lg">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent dark:from-purple-400 dark:to-pink-400">
-                  3+
-                </p>
-                <p className="text-gray-600 dark:text-gray-400">Years Experience</p>
-              </div>
-              <TrendingUp className="w-10 h-10 text-purple-500 dark:text-purple-400" />
-            </div>
-          </div>
-
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-lg">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent dark:from-green-400 dark:to-emerald-400">
-                  25+
-                </p>
-                <p className="text-gray-600 dark:text-gray-400">Projects Delivered</p>
-              </div>
-              <Target className="w-10 h-10 text-green-500 dark:text-green-400" />
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Tech Stack Section with Expandable Categories */}
-        <motion.div
-          variants={containerVariants}
+          className="text-center"
           initial="hidden"
-          animate="visible"
-          className="mb-16 relative z-10"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
         >
-          <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-            Technical Stack
-          </h3>
+          <div className="skills-eyebrow">
+            <Code2 size={12} />
+            Technical Skills
+          </div>
+          <h2 className="skills-heading">Built to Ship. Wired to Learn.</h2>
+          <p className="skills-sub">
+            A curated stack of technologies I use to design, build, and ship
+            production-ready products — from UI to API.
+          </p>
+        </motion.div>
 
-          {Object.entries(techStack).map(([category, skills], categoryIndex) => {
-            const IconComponent = categoryIcons[category];
-            const isOpen = expandedCategory === category;
-
+        {/* ── Stats ── */}
+        <motion.div
+          className="stats-row"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
+        >
+          {stats.map((s, i) => {
+            const Icon = s.icon;
             return (
-              <motion.div
-                key={category}
-                variants={itemVariants}
-                className="mb-6 last:mb-0"
-                initial={{ opacity: 0, x: categoryIndex % 2 === 0 ? -30 : 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 1 + categoryIndex * 0.1 }}
-              >
-                <motion.div
-                  className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300"
-                  whileHover={{ y: -5, boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.1)" }}
-                  onClick={() => toggleCategory(category)}
-                >
-                  <div className="p-6 flex items-center justify-between bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-700">
-                    <div className="flex items-center">
-                      <div className="p-2 bg-gradient-to-r from-teal-500 to-blue-500 rounded-lg mr-4">
-                        <IconComponent className="text-white" size={24} />
-                      </div>
-                      <h4 className="text-2xl font-semibold text-gray-900 dark:text-white capitalize">
-                        {category}
-                      </h4>
-                      <span className="ml-3 text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">
-                        {skills.length} skills
-                      </span>
-                    </div>
-                    <motion.div
-                      animate={{ rotate: isOpen ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="p-2 bg-gray-100 dark:bg-gray-700 rounded-lg"
-                    >
-                      {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                    </motion.div>
-                  </div>
-
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                        className="px-6 pb-6"
-                      >
-                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                          {skills.map((skill, index) => (
-                            <motion.div
-                              key={index}
-                              initial={{ opacity: 0, y: 20 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: -20 }}
-                              transition={{ duration: 0.5, delay: index * 0.05 }}
-                              className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 hover:bg-white dark:hover:bg-gray-600 transition-all duration-300 group"
-                              whileHover={{ scale: 1.05, y: -3 }}
-                              onMouseEnter={() => setHoveredSkill(skill.name)}
-                              onMouseLeave={() => setHoveredSkill(null)}
-                            >
-                              <div className="flex items-center justify-center mb-3">
-                                <div className="p-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm group-hover:shadow-md transition-shadow duration-200">
-                                  <skill.icon className={skill.color + " group-hover:scale-110 transition-transform duration-200"} size={24} />
-                                </div>
-                              </div>
-                              <h5 className="text-sm font-semibold text-gray-800 dark:text-gray-200 text-center mb-2">
-                                {skill.name}
-                              </h5>
-                              <div className="flex justify-between items-center mb-2">
-                                <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
-                                  skill.level === 'Expert'
-                                    ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white'
-                                    : skill.level === 'Advanced'
-                                    ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white'
-                                    : 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
-                                }`}>
-                                  {skill.level}
-                                </span>
-                                <span className="text-xs text-gray-500 dark:text-gray-400">
-                                  {skill.percentage}%
-                                </span>
-                              </div>
-                              <SkillProgressBar
-                                percentage={skill.percentage}
-                                color={
-                                  skill.level === 'Expert'
-                                    ? 'from-green-500 to-emerald-500'
-                                    : skill.level === 'Advanced'
-                                    ? 'from-blue-500 to-indigo-500'
-                                    : 'from-purple-500 to-pink-500'
-                                }
-                              />
-                            </motion.div>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
+              <motion.div key={i} className="stat-card" variants={fadeUp} custom={i}>
+                <div className="stat-icon-wrap"><Icon size={20} /></div>
+                <div>
+                  <div className="stat-value">{s.value}</div>
+                  <div className="stat-label">{s.label}</div>
+                </div>
               </motion.div>
             );
           })}
         </motion.div>
 
-        {/* Proficiency Levels Section */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="mb-16 relative z-10"
-        >
-          <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-            Core Competencies
-          </h3>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {proficiencyLevels.map((item, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="group"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1.5 + index * 0.1 }}
-              >
-                <div className="p-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300 h-full group-hover:transform group-hover:-translate-y-2">
-                  <div className="flex justify-between items-start mb-4">
-                    <div className="flex items-center">
-                      <div className="p-2 bg-gradient-to-r from-teal-500 to-blue-500 rounded-lg mr-4">
-                        <item.icon className="text-white" size={20} />
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
-                          {item.name}
-                        </h4>
-                        <div className="flex items-center mt-1">
-                          <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                            item.level === 'Expert'
-                              ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white'
-                              : item.level === 'Advanced'
-                              ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white'
-                              : 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
-                          }`}>
-                            {item.level}
-                          </span>
-                          <span className="ml-2 text-sm text-gray-500 dark:text-gray-400">
-                            {item.percentage}%
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                    {item.description}
-                  </p>
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-gray-600 dark:text-gray-400">Proficiency</span>
-                    </div>
-                    <SkillProgressBar
-                      percentage={item.percentage}
-                      color={
-                        item.level === 'Expert'
-                          ? 'from-green-500 to-emerald-500'
-                          : item.level === 'Advanced'
-                          ? 'from-blue-500 to-indigo-500'
-                          : 'from-purple-500 to-pink-500'
-                      }
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        {/* ── Tech Stack ── */}
+        <h3 className="section-sub-heading">Technical Stack</h3>
+        <div className="category-grid">
+          {categories.map((cat, i) => (
+            <CategoryCard key={cat.id} cat={cat} index={i} />
+          ))}
+        </div>
 
-        {/* Advanced Soft Skills Section */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="relative z-10"
-        >
-          <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-            Professional Qualities
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {softSkills.map((skill, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="group"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 2 + index * 0.1 }}
-              >
-                <div className="p-6 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-700 rounded-xl border border-gray-200 dark:border-gray-600 hover:shadow-2xl transition-all duration-300 h-full group-hover:transform group-hover:-translate-y-2">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center">
-                      <div className="p-3 bg-gradient-to-r from-teal-500 to-blue-500 rounded-xl mr-4 group-hover:scale-110 transition-transform duration-200">
-                        <skill.icon className="text-white" size={20} />
-                      </div>
-                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
-                        {skill.name}
-                      </h4>
-                    </div>
-                    <SkillScore score={skill.score} />
-                  </div>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {skill.description}
-                  </p>
-                  <div className="mt-4">
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-sm text-gray-500 dark:text-gray-400">Rating</span>
-                      <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                        {skill.score}/100
-                      </span>
-                    </div>
-                    <SkillProgressBar
-                      percentage={skill.score}
-                      color="from-teal-500 to-blue-500"
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        <div className="skills-divider" />
+
+        {/* ── Soft Skills ── */}
+        <h3 className="section-sub-heading">Professional Qualities</h3>
+        <div className="soft-grid">
+          {softSkills.map((item, i) => (
+            <SoftSkillCard key={item.label} item={item} index={i} />
+          ))}
+        </div>
+
       </div>
     </section>
-  );
-};
+  </>
+);
 
 export default Skills;
