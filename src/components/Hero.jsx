@@ -39,7 +39,7 @@ const Hero = () => {
               </button>
               <button
                 onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-                className="border-2 border-teal-600 text-teal-600 dark:text-teal-400 dark:border-teal-400 px-8 py-3 rounded-lg hover:bg-teal-600 hover:text-white dark:hover:bg-teal-700 transition-colors duration-200 font-medium shadow-lg hover:shadow-xl"
+                className="bg-teal-600 border-2 border-teal-600 text-teal-600 text-white dark:border-teal-400 px-8 py-3 rounded-lg hover:bg-teal-600 hover:text-white dark:hover:bg-teal-700 transition-colors duration-200 font-medium shadow-lg hover:shadow-xl"
               >
                 Contact Me
               </button>
