@@ -114,20 +114,28 @@ const Projects = () => {
                 </div>
 
                 <div className="flex space-x-4">
-                  <a
-                    href={project.liveLink}
-                    className="flex items-center text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 font-medium text-sm"
-                  >
-                    <ExternalLink size={14} className="mr-1" />
-                    Live Demo
-                  </a>
-                  <a
-                    href={project.githubLink}
-                    className="flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium text-sm"
-                  >
-                    <Github size={14} className="mr-1" />
-                    GitHub
-                  </a>
+                  {project.liveLink && (
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 font-medium text-sm"
+                    >
+                      <ExternalLink size={14} className="mr-1" />
+                      Live Demo
+                    </a>
+                  )}
+                  {project.githubLink && (
+                    <a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium text-sm"
+                    >
+                      <Github size={14} className="mr-1" />
+                      GitHub
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
