@@ -8,6 +8,7 @@ import {
   MapPin,
   Mail,
   Phone,
+  ExternalLink,
 } from "lucide-react";
 
 const Resume = () => {
@@ -33,6 +34,14 @@ const Resume = () => {
   const experience = [
     {
       id: 1,
+      position: "Junior MERN Stack Developer",
+      company: "Creative Tech Solutions",
+      year: "Sep 2025 – Mar 2026",
+      description:
+        "Developed and maintained full-stack web applications using React.js, Node.js, and Express.js. Designed and managed scalable MongoDB database structures. Collaborated with cross-functional teams to deliver high-quality software solutions and wrote clean, maintainable, and well-structured code.",
+    },
+    {
+      id: 2,
       position: "MERN Stack Developer (Personal Projects)",
       company: "",
       year: "2025 – Present",
@@ -40,7 +49,7 @@ const Resume = () => {
         "Building full-stack applications using MongoDB, Express, React, and Node.js. Learning through personal projects, documentation, and online resources. Focusing on REST APIs, authentication, databases, and deployments.",
     },
     {
-      id: 2,
+      id: 3,
       position: "Web Developer (Learning & Personal Projects)",
       company: "",
       year: "2024 – 2025",
@@ -181,21 +190,67 @@ const Resume = () => {
         <div className="mt-12">
           <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 text-center flex items-center justify-center">
             <Award className="w-6 h-6 mr-2 text-yellow-600 dark:text-yellow-400" />
-            Certifications
+            Certifications & Experience Certificates
           </h3>
-          <div className="bg-white dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm text-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-teal-500/5 to-blue-500/5 opacity-0 animate-pulse"></div>
-            <div className="relative z-10">
-              <Award className="w-12 h-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
-              <h4 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">
-                No Certifications Yet
-              </h4>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
-                Currently pursuing MERN Stack certification from SMIT (Saylani
-                Mass IT Training)
-              </p>
-              <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-teal-500 to-blue-500 text-white text-sm font-medium rounded-full animate-pulse shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                <Calendar size={14} className="mr-2" /> Coming Soon
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Creative Tech Solutions */}
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm relative overflow-hidden flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <Award className="w-8 h-8 text-yellow-600 dark:text-yellow-400" />
+                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-300">
+                    Verified
+                  </span>
+                </div>
+                <h4 className="text-lg font-bold text-gray-800 dark:text-white mb-1">
+                  Junior MERN Stack Developer
+                </h4>
+                <p className="text-sm text-teal-600 dark:text-teal-400 font-medium mb-2">
+                  Creative Tech Solutions
+                </p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-4 flex items-center">
+                  <Calendar size={12} className="mr-1" /> March 2026
+                </p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                  Certified experience in full-stack web development using React.js, Node.js, Express.js, and MongoDB.
+                </p>
+              </div>
+              <div className="mt-4">
+                <a
+                  href="/Abdul_Basit_Exp.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-sm font-medium text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 hover:underline"
+                >
+                  View Certificate <ExternalLink size={14} className="ml-1" />
+                </a>
+              </div>
+            </div>
+
+            {/* SMIT */}
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm relative overflow-hidden flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <Award className="w-8 h-8 text-gray-400 dark:text-gray-500" />
+                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-300 animate-pulse">
+                    In Progress
+                  </span>
+                </div>
+                <h4 className="text-lg font-bold text-gray-800 dark:text-white mb-1">
+                  MERN Stack Development
+                </h4>
+                <p className="text-sm text-teal-600 dark:text-teal-400 font-medium mb-2">
+                  SMIT (Saylani Mass IT Training)
+                </p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-4 flex items-center">
+                  <Calendar size={12} className="mr-1" /> 2024 - 2026
+                </p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                  1.5-year intensive training covering modern web technologies and full-stack development practices.
+                </p>
+              </div>
+              <div className="mt-4 text-sm font-medium text-gray-500 dark:text-gray-400 flex items-center">
+                <Calendar size={14} className="mr-1" /> Expected Graduation 2026
               </div>
             </div>
           </div>
