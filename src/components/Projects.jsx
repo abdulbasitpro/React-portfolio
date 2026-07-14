@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, Lock } from 'lucide-react';
 
 
 const Projects = () => {
@@ -11,7 +11,9 @@ const Projects = () => {
       image: "/images/zyergon-screenshot.png",
       technologies: ["React", "Tailwind CSS", "Vite", "E-commerce"],
       liveLink: "https://zyergon.com/",
-      githubLink: ""
+      githubLink: "https://github.com/AlHamidMehmood/Zyergon",
+      isPrivate: true,
+      projectType: "Paid Client Project"
     },
     {
       id: 2,
@@ -20,7 +22,9 @@ const Projects = () => {
       image: "/images/meers-screenshot.png",
       technologies: ["React", "Tailwind CSS", "Node.js", "MongoDB"],
       liveLink: "https://meers.pk/",
-      githubLink: ""
+      githubLink: "https://github.com/AlHamidMehmood/meerspk",
+      isPrivate: true,
+      projectType: "Paid Client Project"
     },
     {
       id: 3,
@@ -99,7 +103,14 @@ const Projects = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">{project.title}</h3>
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-white">{project.title}</h3>
+                  {project.projectType && (
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800 dark:bg-amber-900/50 dark:text-amber-300">
+                      {project.projectType}
+                    </span>
+                  )}
+                </div>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -126,15 +137,25 @@ const Projects = () => {
                     </a>
                   )}
                   {project.githubLink && (
-                    <a
-                      href={project.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium text-sm"
-                    >
-                      <Github size={14} className="mr-1" />
-                      GitHub
-                    </a>
+                    project.isPrivate ? (
+                      <span 
+                        className="flex items-center text-gray-400 dark:text-gray-500 font-medium text-sm cursor-not-allowed" 
+                        title="This repository is private"
+                      >
+                        <Lock size={14} className="mr-1" />
+                        Private Code
+                      </span>
+                    ) : (
+                      <a
+                        href={project.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium text-sm"
+                      >
+                        <Github size={14} className="mr-1" />
+                        GitHub
+                      </a>
+                    )
                   )}
                 </div>
               </div>
